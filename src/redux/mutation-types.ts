@@ -1,0 +1,3 @@
+export const SET_LANGUAGE = 'SET_LANGUAGE';
+
+export const SET_THEME_CONFIG = 'SET_THEME_CONFIG';
