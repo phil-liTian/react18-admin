@@ -22,13 +22,16 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true,
     "noImplicitAny": false,
+    "types": ["vite/client"],
     "baseUrl": "./",
     "paths": {
       "@/*": ["src/*"],
       "@store/*": ["src/store/*"],
       "@c/*": ["src/components/*"],
       "@a/*": ["src/assets/*"],
-      "@h/*": ["src/hooks/*"]
+      "@h/*": ["src/hooks/*"],
+      "@r/*": ["src/routers/*"],
+      "@v/*": ["src/views/*"],
     }
   },
   "include": ["src"],

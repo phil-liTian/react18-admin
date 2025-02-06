@@ -1,11 +1,19 @@
-import { Provider } from 'react-redux'
-import Login from './pages/login/index'
+import { HashRouter } from 'react-router-dom'
 import { useTheme } from "@h/index";
-function App() {
-  useTheme()
+import Router from '@r/index'
+import { connect } from 'react-redux';
+function App(props: any) {
+  const { themeConfig } = props
+
+  useTheme(themeConfig)
+
   return (
-    <Login />
+    <HashRouter>
+      <Router />
+    </HashRouter>
   )
 }
 
-export default App
+
+const mapStateToProps = (state) => state.global
+export default connect(mapStateToProps)(App)

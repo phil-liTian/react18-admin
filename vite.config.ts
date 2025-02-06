@@ -12,18 +12,16 @@ export default defineConfig({
 			'@': '/src',
 			'@c': '/src/components',
 			'@a': '/src/assets',
-			'@h': '/src/hooks'
+			'@h': '/src/hooks',
+			'@r': '/src/routers',
+			'@v': '/src/views'
 		}
 	},
 	css: {
 		preprocessorOptions: {
 			less: {
-				javascriptEnabled: true,
-				additionalData: `@import "./src/styles/var.less";`
-			},
-			scss: {
-				additionalData: `@import "./src/styles/variables.scss";`
-			}
+				javascriptEnabled: true
+				// additionalData: `@import "./src/styles/var.less";`
 			}
 		}
 	}

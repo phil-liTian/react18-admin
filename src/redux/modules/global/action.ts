@@ -1,3 +1,4 @@
+import { ThemeConfigProp } from '@/redux/interface';
 import * as types from '../../mutation-types';
 
 export const setThemeConfig = (themeConfig: ThemeConfigProp) => {
