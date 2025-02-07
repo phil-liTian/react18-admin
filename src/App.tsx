@@ -14,6 +14,5 @@ function App(props: any) {
   )
 }
 
-
 const mapStateToProps = (state) => state.global
 export default connect(mapStateToProps)(App)

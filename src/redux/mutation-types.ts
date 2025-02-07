@@ -1,3 +1,8 @@
 export const SET_LANGUAGE = 'SET_LANGUAGE';
-
 export const SET_THEME_CONFIG = 'SET_THEME_CONFIG';
+
+// menu
+export const UPDATE_COLLAPSE = 'UPDATE_ASIDE_COLLAPSE';
+export const SET_MENU_LIST = 'SET_MENU_LIST';
+
+

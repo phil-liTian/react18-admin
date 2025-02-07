@@ -32,6 +32,7 @@
       "@h/*": ["src/hooks/*"],
       "@r/*": ["src/routers/*"],
       "@v/*": ["src/views/*"],
+      "@api/*": ["src/api/*"]
     }
   },
   "include": ["src"],

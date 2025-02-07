@@ -10,5 +10,11 @@ export interface GlobalState {
 }
 
 // auth
-
 export interface AuthState {}
+
+
+// menu
+export interface MenuState {
+	isCollapse: boolean;
+	menuList: Menu.MenuOptions[]
+}
