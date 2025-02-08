@@ -1,38 +1,21 @@
 import { ThemeConfigProp } from '@/redux/interface';
 
 const useTheme = async (themeConfig: ThemeConfigProp) => {
-	const { isDark } = themeConfig;
-	let styleTheme;
+	const { isDark, weakOrGray } = themeConfig;
 
-	if (isDark) {
-		styleTheme = await import('@/styles/theme/theme-dark.less');
-	} else {
-		styleTheme = await import('@/styles/theme/theme-default.less');
-	}
-
-	// const darkTheme = await import('@/styles/theme/theme-dark.less');
 	const initTheme = () => {
-		let head = document.getElementsByTagName('head')[0];
-		let styleDom = document.createElement('style');
+		const body = document.documentElement as HTMLElement;
+
+		if ( !weakOrGray ) body.setAttribute('style', '');
+		if ( weakOrGray === 'weak' ) body.setAttribute('style', 'filter: invert(80%)');
+		if ( weakOrGray === 'gray' ) body.setAttribute('style', 'filter: grayscale(100%)');
 
 		try {
-			const getStyle = document.getElementsByTagName('style');
-			if (getStyle.length) {
-				for (let i = 0; i < getStyle.length; i++) {
-					if (getStyle[i]?.getAttribute('data-type') === 'dark') {
-						getStyle[i].remove();
-					}
-				}
-			}
-
-			// styleDom.dataset.type = 'dark';
-			if (isDark) {
-				// styleTheme = darkTheme;
+			if ( isDark ) {
+				body?.classList.add('dark')
 			} else {
-				// styleTheme = defaultTheme;
+				body?.classList.remove('dark')
 			}
-			// styleDom.innerHTML = Object.values(styleTheme).join(';');
-			// head.appendChild(styleDom);
 		} catch (error) {
 			console.log(error);
 		}

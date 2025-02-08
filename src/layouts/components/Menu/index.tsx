@@ -1,12 +1,18 @@
 import React, { useEffect, useState } from 'react'
+import { connect } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 import { Menu, MenuProps, Spin } from 'antd'
 import * as Icons from '@ant-design/icons'
 import { getMenuList } from '@api/modules/login'
+import { setBreadcrumbList } from '@/redux/modules/breadcrumb/action'
+import { findAllBreadcrumb } from '@u/util'
 import Logo from './components/Logo'
 import './index.less'
 
-const LayoutMenu: React.FC = () => {
+const LayoutMenu: React.FC = (props: any) => {
+  const { setBreadcrumbList } = props
   type MenuItem = Required<MenuProps>['items'][number]
+  const navigate = useNavigate()
 
   const [menuList, setMenuList] = useState<MenuItem[]>([])
   const [loading, setLoading] = useState(false)
@@ -41,7 +47,10 @@ const LayoutMenu: React.FC = () => {
     try {
       const { data }  = await getMenuList()
       if ( !data ) return
+      // 处理菜单
       setMenuList(deepLoopFloat(data))
+      // 处理面包屑
+      setBreadcrumbList(findAllBreadcrumb(data))
     } finally {
       setLoading(false)
     }
@@ -51,15 +60,21 @@ const LayoutMenu: React.FC = () => {
     getMenuData()
   }, [])
 
+  const clickMenu = ({ key }) => {
+    navigate(key)
+  }
+
   return <div className="menu">
     <Spin spinning={loading} tip="Loading...">
       <Logo />
       <Menu 
         theme='dark'
         mode='inline'
+        onClick={clickMenu}
         items={menuList} />
     </Spin>
   </div>
 }
 
-export default LayoutMenu
+const mapDispatchToProps = { setBreadcrumbList }
+export default connect(null, mapDispatchToProps)(LayoutMenu)

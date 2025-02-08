@@ -15,7 +15,8 @@ export default defineConfig({
 			'@h': '/src/hooks',
 			'@r': '/src/routers',
 			'@v': '/src/views',
-			'@api': '/src/api'
+			'@api': '/src/api',
+			'@u': '/src/utils'
 		}
 	},
 	css: {

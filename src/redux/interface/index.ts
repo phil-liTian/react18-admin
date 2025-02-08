@@ -1,11 +1,15 @@
 export interface ThemeConfigProp {
 	isDark: boolean;
+	breadcrumb: boolean;
+	// "weak" | "gray" | ""
+	weakOrGray: string
 }
 
 // global
 export interface GlobalState {
 	token: string;
 	language: string;
+	assemblySize: string;
 	themeConfig: ThemeConfigProp;
 }
 
@@ -17,4 +21,9 @@ export interface AuthState {}
 export interface MenuState {
 	isCollapse: boolean;
 	menuList: Menu.MenuOptions[]
+}
+
+// breadcrumb
+export interface BreadcrumbState {
+	breadcrumbList: Menu.MenuOptions[];
 }

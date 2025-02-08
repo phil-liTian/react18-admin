@@ -7,5 +7,5 @@ export const LoginApi = (params: Login.ReqLoginForm) => {
 }
 
 export const getMenuList = () => {
-  return http.get<Menu.MenuOptions>(`${PORT1}/menu/list`)
+  return http.get<Menu.MenuOptions[]>(`${PORT1}/menu/list`)
 }
