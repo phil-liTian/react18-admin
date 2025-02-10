@@ -1,6 +1,5 @@
 import { RouteObject } from "@/routers/interface"
 
-
 const getBreadcrumbList = (path: string, menuList: Menu.MenuOptions[]) => {
   let tempPath: any[] = []
 
@@ -62,4 +61,14 @@ export const searchRoute = (path: string, routes: RouteObject[] = []) => {
     }
   }
   return result
+}
+
+
+
+export const handleRouter = (routerList: Menu.MenuOptions[] = [], newArr: string[] = []) => {
+  routerList.map((item: Menu.MenuOptions) => {
+    typeof item === 'object' && item.path && newArr.push(item.path)
+    item.children && handleRouter(item.children, newArr)
+  })
+  return newArr
 }

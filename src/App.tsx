@@ -3,6 +3,7 @@ import { ConfigProvider } from 'antd'
 import { useTheme } from "@h/index";
 import Router from '@r/index'
 import { connect } from 'react-redux';
+import AuthRouter from '@r/utils/authRouter'
 function App(props: any) {
   const { themeConfig, assemblySize } = props
 
@@ -11,7 +12,9 @@ function App(props: any) {
   return (
     <HashRouter>
       <ConfigProvider componentSize={assemblySize}>
-        <Router />
+        <AuthRouter>
+          <Router />
+        </AuthRouter>
       </ConfigProvider>
     </HashRouter>
   )

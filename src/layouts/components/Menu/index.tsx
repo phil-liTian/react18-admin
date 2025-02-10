@@ -5,12 +5,13 @@ import { Menu, MenuProps, Spin } from 'antd'
 import * as Icons from '@ant-design/icons'
 import { getMenuList } from '@api/modules/login'
 import { setBreadcrumbList } from '@/redux/modules/breadcrumb/action'
-import { findAllBreadcrumb } from '@u/util'
+import { setAuthRouter } from '@/redux/modules/auth/action'
+import { findAllBreadcrumb, handleRouter } from '@u/util'
 import Logo from './components/Logo'
 import './index.less'
 
 const LayoutMenu: React.FC = (props: any) => {
-  const { setBreadcrumbList } = props
+  const { setBreadcrumbList, setAuthRouter } = props
   type MenuItem = Required<MenuProps>['items'][number]
   const navigate = useNavigate()
 
@@ -51,6 +52,10 @@ const LayoutMenu: React.FC = (props: any) => {
       setMenuList(deepLoopFloat(data))
       // 处理面包屑
       setBreadcrumbList(findAllBreadcrumb(data))
+      // 处理菜单权限 将返回的菜单处理成一维数组
+      const dynamicMenuList = handleRouter(data)  
+      setAuthRouter(dynamicMenuList)
+      
     } finally {
       setLoading(false)
     }
@@ -76,5 +81,5 @@ const LayoutMenu: React.FC = (props: any) => {
   </div>
 }
 
-const mapDispatchToProps = { setBreadcrumbList }
+const mapDispatchToProps = { setBreadcrumbList, setAuthRouter }
 export default connect(null, mapDispatchToProps)(LayoutMenu)

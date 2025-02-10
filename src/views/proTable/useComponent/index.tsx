@@ -1,7 +1,8 @@
 
-
 const useComponent = () => {
-  return <div>useComponent</div>
+  return <div className="card content-box">
+    <span className="text">UseComponent</span>
+  </div>
 }
 
 export default useComponent

@@ -14,7 +14,10 @@ export interface GlobalState {
 }
 
 // auth
-export interface AuthState {}
+export interface AuthState {
+	authRouter: string[],
+	authButtons: Object
+}
 
 
 // menu

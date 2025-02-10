@@ -10,7 +10,7 @@ Object.keys(metaRouter).forEach(item => {
   routerArray.push(...(metaRouter[item] as any))
 })
 
-const rootRouter: RouteObject[] = [
+export const rootRouter: RouteObject[] = [
   {
     path: '/',
     element: <Navigate to='/login' />

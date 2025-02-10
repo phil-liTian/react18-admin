@@ -14,13 +14,16 @@ const proTableRouter: RouteObject[] = [
         path: '/proTable/useHooks',
         element: LazyLoad(React.lazy(() => import('@/views/proTable/useHooks/index'))),
         meta: {
-          title: '使用 Hooks'
+          requiresAuth: true,
+          title: '使用 Hooks',
+          key: 'useHooks'
         }
       },
       {
         path: '/proTable/useComponent',
         element: LazyLoad(React.lazy(() => import('@/views/proTable/useComponent/index'))),
         meta: {
+          requiresAuth: true,
           title: '使用 Component'
         }
       }

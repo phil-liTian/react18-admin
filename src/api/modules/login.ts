@@ -9,3 +9,7 @@ export const LoginApi = (params: Login.ReqLoginForm) => {
 export const getMenuList = () => {
   return http.get<Menu.MenuOptions[]>(`${PORT1}/menu/list`)
 }
+
+export const getAuthButtons = () => {
+  return http.get<Login.ResAuthButtons>(`${PORT1}/auth/buttons`)
+}
