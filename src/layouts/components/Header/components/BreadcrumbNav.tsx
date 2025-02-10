@@ -10,10 +10,10 @@ const BreadcrumbNav: React.FC = (props: any) => {
   const { themeConfig } = props.global
 
   const breadcrumbList = props.breadcrumb.breadcrumbList[pathname] || []
-  
+
   return (
     <>
-      { 
+      {
         themeConfig.breadcrumb && (
           <Breadcrumb>
             <Breadcrumb.Item href={`#${HOME_URL}`}>首页</Breadcrumb.Item>

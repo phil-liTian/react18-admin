@@ -11,3 +11,8 @@ export const SET_MENU_LIST = 'SET_MENU_LIST';
 export const SET_BREADCRUMB_LIST = 'SET_BREADCRUMB_LIST'
 
 
+// tabs
+export const SET_TABS_LIST = 'SET_TABS_LIST'
+export const SET_TABS_ACTIVE = 'SET_TABS_ACTIVE'
+
+

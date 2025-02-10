@@ -27,3 +27,9 @@ export interface MenuState {
 export interface BreadcrumbState {
 	breadcrumbList: Menu.MenuOptions[];
 }
+
+// tabs
+export interface TabsState {
+	tabsList: Menu.MenuOptions[];
+	tabsActive: string
+}

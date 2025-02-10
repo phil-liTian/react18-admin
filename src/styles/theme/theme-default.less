@@ -1,6 +1,27 @@
 
+
+
+@light-bg-color: #fff;
+@light-border-color: #e4e7ed;
+
 .login-container {
   .login-box {
     background-color: hsl(0deg 0% 100% / 80%) !important;
+  }
+}
+
+
+.container {
+  .ant-layout {
+    .tabs,
+    .card {
+      background-color: @light-bg-color !important;
+      border-color: @light-border-color !important;
+    }
+
+    &-header {
+      background-color: @light-bg-color !important;
+      padding: 0 40px 0 20px;
+    }
   }
 }

@@ -7,7 +7,7 @@ import SwitchDark from "@/components/SwitchDark";
 import { updateCollapse } from "@/redux/modules/menu/action";
 
 const Theme: React.FC = (props: any) => {
-  const { setThemeConfig, global, menu } = props
+  const { setThemeConfig, global, menu, updateCollapse } = props
   const { themeConfig } = global
   const { isCollapse } = menu
   const { weakOrGray, breadcrumb, tabs, footer } = themeConfig
@@ -15,11 +15,11 @@ const Theme: React.FC = (props: any) => {
 
 
   const onChange = (checked: boolean, key: string) => {
-    return setThemeConfig({ ...themeConfig, [key]: !checked })
+    return setThemeConfig({ ...themeConfig, [key]: checked })
   }
 
   const setWeakOrGray = (checked: boolean, key: string) => {
-    if ( checked ) return setThemeConfig({ ...themeConfig, weakOrGray: key })
+    if (checked) return setThemeConfig({ ...themeConfig, weakOrGray: key })
     setThemeConfig({ ...themeConfig, weakOrGray: '' })
   }
 
@@ -31,10 +31,11 @@ const Theme: React.FC = (props: any) => {
       }}
     ></i>
 
-    <Drawer 
+    <Drawer
       closable={false}
-      title='布局设置' 
-      width={320} 
+      title='布局设置'
+      onClose={() => setVisible(false)}
+      width={320}
       open={visible}>
       <Divider> <FireOutlined /> 全局主题 </Divider>
       <div className="theme-item">
@@ -46,22 +47,22 @@ const Theme: React.FC = (props: any) => {
       </div>
       <div className="theme-item">
         <span>色弱模式</span>
-        <Switch checked={ weakOrGray === 'weak' } onChange={e => setWeakOrGray(e, 'weak')} />
+        <Switch checked={weakOrGray === 'weak'} onChange={e => setWeakOrGray(e, 'weak')} />
       </div>
 
       {/* 界面设置 */}
       <Divider> <SettingOutlined /> 界面设置 </Divider>
       <div className="theme-item">
-        <span>折叠菜单</span> <Switch checked={ isCollapse } onChange={e => updateCollapse(e)} />
+        <span>折叠菜单</span> <Switch checked={isCollapse} onChange={e => updateCollapse(e)} />
       </div>
       <div className="theme-item">
-        <span>面包屑导航</span> <Switch checked={ breadcrumb } onChange={e => onChange(e, 'breadcrumb')} />
+        <span>面包屑导航</span> <Switch checked={breadcrumb} onChange={e => onChange(e, 'breadcrumb')} />
       </div>
       <div className="theme-item">
-        <span>标签栏</span> <Switch checked={ tabs } onChange={e => onChange(e, 'tabs')} />
+        <span>标签栏</span> <Switch checked={tabs} onChange={e => onChange(e, 'tabs')} />
       </div>
       <div className="theme-item">
-        <span>页脚</span> <Switch checked={ footer } onChange={e => onChange(e, 'footer')} />
+        <span>页脚</span> <Switch checked={footer} onChange={e => onChange(e, 'footer')} />
       </div>
     </Drawer>
   </>
@@ -69,5 +70,5 @@ const Theme: React.FC = (props: any) => {
 
 
 const mapStateToProps = (state: any) => state;
-const mapDispatchToProps = { setThemeConfig };
+const mapDispatchToProps = { setThemeConfig, updateCollapse };
 export default connect(mapStateToProps, mapDispatchToProps)(Theme)

@@ -1,3 +1,4 @@
+import { RouteObject } from "@/routers/interface"
 
 
 const getBreadcrumbList = (path: string, menuList: Menu.MenuOptions[]) => {
@@ -48,4 +49,17 @@ export const findAllBreadcrumb = (menuList: Menu.MenuOptions[]): { [key: string]
 
   menuList.forEach(item => loop(item))
   return allBreadcrumbList;
+}
+
+// 匹配当前路由信息
+export const searchRoute = (path: string, routes: RouteObject[] = []) => {
+  let result: RouteObject = {}
+  for (let item of routes) {
+    if (item.path === path) return item
+    if (item.children) {
+      const res = searchRoute(path, item.children)
+      if (Object.keys(res).length) result = res
+    }
+  }
+  return result
 }
