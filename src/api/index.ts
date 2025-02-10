@@ -1,5 +1,8 @@
 import axios, { AxiosError, AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios'
 import { ResultData } from './interface';
+import { axiosCanceler } from './helper/axiosCancel'
+
+
 
 const config = {
 	// 默认地址请求地址，可在 .env 开头文件中修改
@@ -19,6 +22,7 @@ class RequestHttp {
 
     this.service.interceptors.request.use(
       (config: AxiosRequestConfig) => {
+				axiosCanceler.addPending(config)
         const token: string = '123'
         return { ...config, headers: { ...config.headers, 'x-access-token': token } } as any
       },

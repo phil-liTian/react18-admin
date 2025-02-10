@@ -4,12 +4,14 @@ import store from '@/redux'
 import { rootRouter } from '../index'
 import { searchRoute } from '@u/util'
 import { HOME_URL } from '@/config/config'
+import { axiosCanceler } from '@api/helper/axiosCancel'
 
 const AuthRouter = (props: { children: JSX.Element }) => {
   const { pathname } = useLocation()
   const { authRouter } = store.getState().auth
   const route = searchRoute(pathname, rootRouter)
-
+  // * 在跳转路由之前，清除所有的请求
+  axiosCanceler.removeAllPending()
   // 无需权限 直接放行
   if ( !route?.meta?.requiresAuth ) return props.children
 
