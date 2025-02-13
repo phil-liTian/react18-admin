@@ -19,7 +19,6 @@ export interface AuthState {
 	authButtons: Object
 }
 
-
 // menu
 export interface MenuState {
 	isCollapse: boolean;

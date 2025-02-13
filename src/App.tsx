@@ -8,7 +8,6 @@ function App(props: any) {
   const { themeConfig, assemblySize } = props
 
   useTheme(themeConfig)
-
   return (
     <HashRouter>
       <ConfigProvider componentSize={assemblySize}>

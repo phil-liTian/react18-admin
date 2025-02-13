@@ -1,8 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Breadcrumb } from 'antd'
+import { Breadcrumb, MenuProps } from 'antd'
 import { useLocation } from 'react-router-dom'
 import { HOME_URL } from '@/config/config'
+import { ItemType } from "antd/es/breadcrumb/Breadcrumb";
 
 
 const BreadcrumbNav: React.FC = (props: any) => {
@@ -11,11 +12,21 @@ const BreadcrumbNav: React.FC = (props: any) => {
 
   const breadcrumbList = props.breadcrumb.breadcrumbList[pathname] || []
 
+  let items: ItemType[] = [{ title: '首页', path: `${HOME_URL}` }]
+  if (breadcrumbList.length > 0) {
+    items = items.concat(breadcrumbList.map((item: any, index: number) => {
+      return {
+        title: item !== '首页' ? item : null,
+        path: `${index}`
+      }
+    }))
+  }
+
   return (
     <>
       {
         themeConfig.breadcrumb && (
-          <Breadcrumb>
+          <Breadcrumb items={items}>
             <Breadcrumb.Item href={`#${HOME_URL}`}>首页</Breadcrumb.Item>
             {
               breadcrumbList.map((item: any, index: number) => {

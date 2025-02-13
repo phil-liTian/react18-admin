@@ -2,7 +2,15 @@
 
 
 @light-bg-color: #fff;
+@light-main-bg-color: #f0f2f5;
 @light-border-color: #e4e7ed;
+
+body {
+	background-color: @light-bg-color !important;
+	// #driver-highlighted-element-stage {
+	// 		background-color: #fff !important;
+	// }
+}
 
 .login-container {
   .login-box {
@@ -13,6 +21,7 @@
 
 .container {
   .ant-layout {
+    background-color: @light-main-bg-color !important;
     .tabs,
     .card {
       background-color: @light-bg-color !important;

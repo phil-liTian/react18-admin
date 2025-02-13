@@ -1,11 +1,12 @@
 
-import { Dropdown, Menu } from 'antd'
+import { Dropdown, MenuProps } from 'antd'
 import { connect } from 'react-redux'
 import { setLanguage } from '@/redux/modules/global/action'
 
 const Language = (props: any) => {
   const { language, setLanguage } = props
-  const menu = <Menu items={[
+
+  const items: MenuProps['items'] = [
     {
       key: '1',
       label: <span>简体中文</span>,
@@ -18,11 +19,11 @@ const Language = (props: any) => {
       disabled: language === 'en',
       onClick: () => setLanguage('en')
     }
-  ]} />
+  ]
 
 
   return (
-    <Dropdown overlay={menu} trigger={['click']} arrow={true}>
+    <Dropdown menu={{ items }} trigger={['click']} arrow={true}>
       <i className="icon-style iconfont icon-zhongyingwen"></i>
     </Dropdown>
   )

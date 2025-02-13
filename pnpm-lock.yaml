@@ -47,6 +47,12 @@ importers:
       redux-persist:
         specifier: ^6.0.0
         version: 6.0.0(react@18.3.1)(redux@5.0.1)
+      redux-promise:
+        specifier: ^0.6.0
+        version: 0.6.0
+      redux-thunk:
+        specifier: ^2.4.1
+        version: 2.4.1(redux@5.0.1)
       screenfull:
         specifier: ^6.0.2
         version: 6.0.2
@@ -1267,6 +1273,9 @@ packages:
   flatted@3.3.2:
     resolution: {integrity: sha512-AiwGJM8YcNOaobumgtng+6NHuOqC3A7MixFeDafM3X9cIUM+xUXoS5Vfgf+OihAYe20fxqNM9yPBXJzRtZ/4eA==}
 
+  flux-standard-action@2.1.2:
+    resolution: {integrity: sha512-7vdgawlphCjzaMLdpZv8hlGC/FJCXu6sqE3Wuqe3HLZ22KcDiO4IFplxLDePDhEt6hgCrugt45RoUObuzZP6Kg==, tarball: https://r2.cnpmjs.org/flux-standard-action/-/flux-standard-action-2.1.2.tgz}
+
   follow-redirects@1.15.9:
     resolution: {integrity: sha512-gew4GsXizNgdoRyqmyfMHyAmXsZDk6mHkSxZFCzW9gwlbtOW44CDtYavM+y+72qD/Vq2l550kMF52DT8fOLJqQ==}
     engines: {node: '>=4.0'}
@@ -1433,6 +1442,9 @@ packages:
     resolution: {integrity: sha512-drqDG3cbczxxEJRoOXcOjtdp1J/lyp1mNn0xaznRs8+muBhgQcrnbspox5X5fOw0HnMnbfDzvnEMEtqDEJEo8w==, tarball: https://r2.cnpmjs.org/is-obj/-/is-obj-2.0.0.tgz}
     engines: {node: '>=8'}
 
+  is-promise@2.2.2:
+    resolution: {integrity: sha512-+lP4/6lKUBfQjZ2pdxThZvLUAafmZb8OAxFb8XXtiQmS35INgr85hdOGoEs124ez1FCnZJt6jau/T+alh58QFQ==, tarball: https://r2.cnpmjs.org/is-promise/-/is-promise-2.2.2.tgz}
+
   is-text-path@2.0.0:
     resolution: {integrity: sha512-+oDTluR6WEjdXEJMnC2z6A4FRwFoYuvShVVEGsS7ewc0UTi2QtAKMDJuL4BDEVt+5T7MjFo12RP8ghOM75oKJw==, tarball: https://r2.cnpmjs.org/is-text-path/-/is-text-path-2.0.0.tgz}
     engines: {node: '>=8'}
@@ -1514,6 +1526,9 @@ packages:
 
   lodash.isplainobject@4.0.6:
     resolution: {integrity: sha512-oSXzaWypCMHkPC3NvBEaPHf0KsA5mvPrOPgQWDsbg8n7orZ290M0BmC/jgRZ4vcJ6DTAhjrsSYgdsW/F+MFOBA==, tarball: https://r2.cnpmjs.org/lodash.isplainobject/-/lodash.isplainobject-4.0.6.tgz}
+
+  lodash.isstring@4.0.1:
+    resolution: {integrity: sha512-0wJxfxH1wgO3GrbuP+dTTk7op+6L41QCXbGINEmD+ny/G/eCqGzxyCsh7159S+mgDDcoarnBw6PC1PS5+wUGgw==, tarball: https://r2.cnpmjs.org/lodash.isstring/-/lodash.isstring-4.0.1.tgz}
 
   lodash.kebabcase@4.1.1:
     resolution: {integrity: sha512-N8XRTIMMqqDgSy4VLKPnJ/+hpGZN+PHQiJnSenYqPaVV/NCqEogTnAdZLQiGKhxX+JCs8waWq2t1XHWKOmlY8g==, tarball: https://r2.cnpmjs.org/lodash.kebabcase/-/lodash.kebabcase-4.1.1.tgz}
@@ -2027,6 +2042,14 @@ packages:
     peerDependenciesMeta:
       react:
         optional: true
+
+  redux-promise@0.6.0:
+    resolution: {integrity: sha512-R2mGxJbPFgXyCNbFDE6LjTZhCEuACF54g1bxld3nqBhnRMX0OsUyWk77moF7UMGkUdl5WOAwc4BC5jOd1dunqQ==, tarball: https://r2.cnpmjs.org/redux-promise/-/redux-promise-0.6.0.tgz}
+
+  redux-thunk@2.4.1:
+    resolution: {integrity: sha512-OOYGNY5Jy2TWvTL1KgAlVy6dcx3siPJ1wTq741EPyUKfn6W6nChdICjZwCd0p8AZBs5kWpZlbkXW2nE/zjUa+Q==, tarball: https://r2.cnpmjs.org/redux-thunk/-/redux-thunk-2.4.1.tgz}
+    peerDependencies:
+      redux: ^4
 
   redux@5.0.1:
     resolution: {integrity: sha512-M9/ELqF6fy8FwmkpnF0S3YKOqMyoWJ4+CS5Efg2ct3oY9daQvd/Pc71FpGZsVsbl3Cpb+IIcjBDUnnyBdQbq4w==}
@@ -3647,6 +3670,11 @@ snapshots:
 
   flatted@3.3.2: {}
 
+  flux-standard-action@2.1.2:
+    dependencies:
+      lodash.isplainobject: 4.0.6
+      lodash.isstring: 4.0.1
+
   follow-redirects@1.15.9: {}
 
   form-data@4.0.1:
@@ -3777,6 +3805,8 @@ snapshots:
 
   is-obj@2.0.0: {}
 
+  is-promise@2.2.2: {}
+
   is-text-path@2.0.0:
     dependencies:
       text-extensions: 2.4.0
@@ -3849,6 +3879,8 @@ snapshots:
   lodash.camelcase@4.3.0: {}
 
   lodash.isplainobject@4.0.6: {}
+
+  lodash.isstring@4.0.1: {}
 
   lodash.kebabcase@4.1.1: {}
 
@@ -4400,6 +4432,15 @@ snapshots:
       redux: 5.0.1
     optionalDependencies:
       react: 18.3.1
+
+  redux-promise@0.6.0:
+    dependencies:
+      flux-standard-action: 2.1.2
+      is-promise: 2.2.2
+
+  redux-thunk@2.4.1(redux@5.0.1):
+    dependencies:
+      redux: 5.0.1
 
   redux@5.0.1: {}
 

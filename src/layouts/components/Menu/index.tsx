@@ -6,12 +6,13 @@ import * as Icons from '@ant-design/icons'
 import { getMenuList } from '@api/modules/login'
 import { setBreadcrumbList } from '@/redux/modules/breadcrumb/action'
 import { setAuthRouter } from '@/redux/modules/auth/action'
-import { findAllBreadcrumb, handleRouter } from '@u/util'
+import { setMenuList } from '@/redux/modules/menu/action'
+import { findAllBreadcrumb, handleRouter, searchRoute } from '@u/util'
 import Logo from './components/Logo'
 import './index.less'
 
 const LayoutMenu: React.FC = (props: any) => {
-  const { setBreadcrumbList, setAuthRouter } = props
+  const { setBreadcrumbList, setAuthRouter, setMenuList: setMenuListAction } = props
   type MenuItem = Required<MenuProps>['items'][number]
   const navigate = useNavigate()
 
@@ -46,16 +47,16 @@ const LayoutMenu: React.FC = (props: any) => {
 
   const getMenuData = async () => {
     try {
-      const { data }  = await getMenuList()
-      if ( !data ) return
+      const { data } = await getMenuList()
+      if (!data) return
       // 处理菜单
       setMenuList(deepLoopFloat(data))
       // 处理面包屑
       setBreadcrumbList(findAllBreadcrumb(data))
       // 处理菜单权限 将返回的菜单处理成一维数组
-      const dynamicMenuList = handleRouter(data)  
+      const dynamicMenuList = handleRouter(data)
       setAuthRouter(dynamicMenuList)
-      
+      setMenuListAction(data)
     } finally {
       setLoading(false)
     }
@@ -66,13 +67,15 @@ const LayoutMenu: React.FC = (props: any) => {
   }, [])
 
   const clickMenu = ({ key }) => {
+    const route = searchRoute(key, props.menuList)
+    if (route.isLink) window.open(route.isLink)
     navigate(key)
   }
 
   return <div className="menu">
     <Spin spinning={loading} tip="Loading...">
       <Logo />
-      <Menu 
+      <Menu
         theme='dark'
         mode='inline'
         onClick={clickMenu}
@@ -80,6 +83,6 @@ const LayoutMenu: React.FC = (props: any) => {
     </Spin>
   </div>
 }
-
-const mapDispatchToProps = { setBreadcrumbList, setAuthRouter }
-export default connect(null, mapDispatchToProps)(LayoutMenu)
+const mapStateToProps = (state: any) => state.menu
+const mapDispatchToProps = { setBreadcrumbList, setMenuList, setAuthRouter }
+export default connect(mapStateToProps, mapDispatchToProps)(LayoutMenu)

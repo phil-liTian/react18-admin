@@ -7,7 +7,7 @@ const globalState = {
 	language: 'zh',
 	assemblySize: 'middle',
 	themeConfig: {
-		isDark: true,
+		isDark: false,
 		breadcrumb: true,
 		weakOrGray: "",
 		tabs: false,

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { Menu, Dropdown } from 'antd'
+import { Dropdown, MenuProps } from 'antd'
 import { setAssemblySize } from '@/redux/modules/global/action'
 
 const AssemblySize = (props: any) => {
@@ -8,7 +8,7 @@ const AssemblySize = (props: any) => {
     setAssemblySize(e.key)
   }
 
-  const menu = <Menu items={[
+  const items: MenuProps['items'] = [
     {
       key: 'middle',
       disabled: assemblySize === 'middle',
@@ -27,10 +27,10 @@ const AssemblySize = (props: any) => {
       label: <span>小型</span>,
       onClick
     }
-  ]} />
+  ]
 
   return (
-    <Dropdown overlay={menu} trigger={['click']} arrow={true}>
+    <Dropdown menu={{ items }} trigger={['click']} arrow={true}>
       <i className="icon-style iconfont icon-contentright"></i>
     </Dropdown>
   )
