@@ -25,4 +25,4 @@
 - 🚀 使用 自定义高阶组件 进行路由权限拦截（403 页面）、页面按钮权限配置
 - 🚀 支持 React-Router v7 路由懒加载配置、菜单手风琴模式、无限级菜单、多标签页、面包屑导航
 - 🚀 使用 Prettier 统一格式化代码，集成 Eslint、Stylelint 代码校验规范（项目规范配置）
-- 🚀 使用 husky、lint-staged、commitlint、commitizen、cz-git 规范提交信息（项目规范配置）
+- 🚀 使用 husky、commitlint 规范提交信息（项目规范配置）
