@@ -63,8 +63,6 @@ export const searchRoute = (path: string, routes: RouteObject[] = []) => {
   return result
 }
 
-
-
 export const handleRouter = (routerList: Menu.MenuOptions[] = [], newArr: string[] = []) => {
   routerList.map((item: Menu.MenuOptions) => {
     typeof item === 'object' && item.path && newArr.push(item.path)
