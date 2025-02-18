@@ -1,3 +1,6 @@
+/*
+ * @author: phil.li
+ */
 import { StrictMode } from 'react'
 import { Provider } from 'react-redux'
 import { createRoot } from 'react-dom/client'
@@ -5,7 +8,8 @@ import { PersistGate } from 'redux-persist/integration/react'
 import { persistor } from '@/redux/index.ts'
 import '@a/iconfont/iconfont.less'
 import '@/language/index';
-import './styles/index.less'
+import './styles/index.less'  
+import 'tailwindcss'
 import store from './redux/index'
 import App from './App.tsx'
 

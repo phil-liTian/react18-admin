@@ -1,5 +1,10 @@
+/*
+ * @author: phil.li
+ * @description: 数据可视化
+ */
 import { Tabs } from 'antd'
 
+// 数据可视化
 const DataVisualize = () => {
   const items = [
     { label: "未来7日", key: '1' },
