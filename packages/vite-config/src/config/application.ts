@@ -1,10 +1,8 @@
 /*
  * @author: phil.li
  */
-/*
- * @author: phil.li
- */
-import { defineConfig, UserConfig } from 'vite';
+import { UserConfig } from 'vite';
+import { defineConfig } from 'vitest/config';
 import react from '@vitejs/plugin-react';
 
 interface DefineConfig {
@@ -17,11 +15,11 @@ export function defineApplicationConfig(config: DefineConfig = {}) {
 		server: {
 			open: true
 		},
-		// test: {
-		// 	globals: true,
-		// 	environment: 'happy-dom',
-		// 	include: ['**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}']
-		// },
+		test: {
+			globals: true,
+			environment: 'happy-dom',
+			include: ['**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}']
+		},
 		resolve: {
 			alias: {
 				'@': '/src',
